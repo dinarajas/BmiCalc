@@ -12,6 +12,7 @@
 		8F43F23921328B4C007E9AE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F43F23721328B4C007E9AE0 /* LaunchScreen.storyboard */; };
 		8F43F24421328B4C007E9AE0 /* BmiCalcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F43F24321328B4C007E9AE0 /* BmiCalcTests.swift */; };
 		8F43F25021328C2B007E9AE0 /* Bmi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F43F24F21328C2B007E9AE0 /* Bmi.storyboard */; };
+		8F43F25521328D26007E9AE0 /* BmiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F43F25421328D26007E9AE0 /* BmiViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,7 @@
 		8F43F24321328B4C007E9AE0 /* BmiCalcTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BmiCalcTests.swift; sourceTree = "<group>"; };
 		8F43F24521328B4C007E9AE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8F43F24F21328C2B007E9AE0 /* Bmi.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Bmi.storyboard; sourceTree = "<group>"; };
+		8F43F25421328D26007E9AE0 /* BmiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BmiViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				8F43F24F21328C2B007E9AE0 /* Bmi.storyboard */,
+				8F43F25421328D26007E9AE0 /* BmiViewController.swift */,
 			);
 			path = Bmi;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F43F22F21328B4C007E9AE0 /* AppDelegate.swift in Sources */,
+				8F43F25521328D26007E9AE0 /* BmiViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
