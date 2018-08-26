@@ -8,4 +8,18 @@
 
 import UIKit
 
-class BmiViewController: UIViewController {}
+class BmiViewController: UIViewController {
+  @IBOutlet weak var weightLabel: UILabel!
+  @IBOutlet weak var heightLabel: UILabel!
+
+  @IBOutlet weak var heightSlider: UISlider!
+  @IBOutlet weak var weightSlider: UISlider!
+  
+  @IBOutlet weak var bmiValueLabel: UILabel!
+
+  private let defaultWeight = 40
+  private let minimumWeight = 30
+
+  private let defaultHeight = 160
+  private let minimumHeight = 130
+}
