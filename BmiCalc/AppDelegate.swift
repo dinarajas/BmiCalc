@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  BmiCalc
 //
-//  Created by Dinesh IIINC on 26/08/18.
+//  Created by Dinesh on 26/08/18.
 //  Copyright © 2018 dinaraja.me. All rights reserved.
 //
 
