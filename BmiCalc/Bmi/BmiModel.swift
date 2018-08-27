@@ -9,7 +9,8 @@ import RxSwift
 class BmiModel {
   static func bind(
     _ lifecycle: Observable<MviLifecycle>,
-    _ states: Observable<BmiState>
+    _ states: Observable<BmiState>,
+    _ intentions: BmiIntentions
   ) -> Observable<BmiState> {
     let createdLifecycleStates = lifecycle
       .filter { lifecycle in lifecycle == .created }
@@ -20,9 +21,25 @@ class BmiModel {
       .withLatestFrom(states)
       .map { (state: BmiState) in state.restored() }
 
+    let heightChangeStates = intentions
+      .height()
+      .withLatestFrom(states) { (height, state: BmiState) -> BmiState in
+        let bmi = calculateBmi(height: height, weight: state.weight)
+        return state.heightChanged(height: height, bmi: bmi)
+      }
     return Observable.merge(
       createdLifecycleStates,
-      restoredLifecycleStates
+      restoredLifecycleStates,
+      heightChangeStates
     )
+  }
+
+  static func calculateBmi(
+    height: Int,
+    weight: Int
+  ) -> Double {
+    let heightInMeters = Double(height)/100
+    let bmi = Double(weight) / (heightInMeters * heightInMeters)
+    return bmi
   }
 }

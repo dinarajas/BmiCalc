@@ -8,7 +8,7 @@ import Foundation
 protocol BmiView {
   func render(state: BmiState)
   func showBmi(
-    bmi: Float,
+    bmi: Double,
     height: Int,
     weight: Int
   )

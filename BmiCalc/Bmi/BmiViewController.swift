@@ -21,16 +21,24 @@ class BmiViewController: MviController<BmiState> {
 
   private let defaultWeight = 40
   private let minimumWeight = 30
+  private let maximumWeight = 200
 
   private let defaultHeight = 160
   private let minimumHeight = 130
+  private let maximumHeight = 200
+
+  private lazy var intentions = BmiIntentions(
+    heightSlider.rx.value.asObservable(),
+    minimumHeight,
+    maximumHeight
+  )
 
   override func bind(
     states: Observable<BmiState>,
     lifecycle: Observable<MviLifecycle>
   ) -> Observable<BmiState> {
     return BmiModel
-      .bind(lifecycle, states)
+      .bind(lifecycle, states, intentions)
   }
 
   override func emits(state: BmiState) {
@@ -39,7 +47,7 @@ class BmiViewController: MviController<BmiState> {
 }
 
 extension BmiViewController: BmiView {
-  func showBmi(bmi: Float, height: Int, weight: Int) {
+  func showBmi(bmi: Double, height: Int, weight: Int) {
     bmiValueLabel.text = "\(bmi)"
     heightLabel.text = "\(height)"
     weightLabel.text = "\(weight)"

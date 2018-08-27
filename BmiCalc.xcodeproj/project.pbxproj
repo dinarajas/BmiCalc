@@ -13,6 +13,7 @@
 		5F8F63FD5FAF30FE4C905DED /* MviController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8F6618A711ED5512A1139B /* MviController.swift */; };
 		5F8F663E0501B44D7D132A2A /* MviLifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8F6E28B89B724F0530E492 /* MviLifecycle.swift */; };
 		5F8F676E7FD23E5F4339D749 /* BmiModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8F6B7A0AB963102608FC95 /* BmiModelTests.swift */; };
+		5F8F67E00BFEF57E66C68498 /* BmiIntentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8F69B9221A4201DBC841F3 /* BmiIntentions.swift */; };
 		5F8F6AC4A9630DCE1BC1F7BC /* BmiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8F67DE452B154E972D76DA /* BmiModel.swift */; };
 		5F8F6B9C603247A425127E7C /* MviState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8F6AB7E17F4A4280F20B7A /* MviState.swift */; };
 		5F8F6D8917E0A32508BF74D2 /* Observable+Mvi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8F69D3A0F90554B43D6683 /* Observable+Mvi.swift */; };
@@ -41,6 +42,7 @@
 		5F8F6618A711ED5512A1139B /* MviController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MviController.swift; sourceTree = "<group>"; };
 		5F8F67DE452B154E972D76DA /* BmiModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BmiModel.swift; sourceTree = "<group>"; };
 		5F8F684D84C473637141402A /* BmiState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BmiState.swift; sourceTree = "<group>"; };
+		5F8F69B9221A4201DBC841F3 /* BmiIntentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BmiIntentions.swift; sourceTree = "<group>"; };
 		5F8F69D3A0F90554B43D6683 /* Observable+Mvi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+Mvi.swift"; sourceTree = "<group>"; };
 		5F8F6AB7E17F4A4280F20B7A /* MviState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MviState.swift; sourceTree = "<group>"; };
 		5F8F6B7A0AB963102608FC95 /* BmiModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BmiModelTests.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				5F8F67DE452B154E972D76DA /* BmiModel.swift */,
 				5F8F684D84C473637141402A /* BmiState.swift */,
 				5F8F65814C52B085B376D474 /* BmiView.swift */,
+				5F8F69B9221A4201DBC841F3 /* BmiIntentions.swift */,
 			);
 			path = Bmi;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				5F8F6AC4A9630DCE1BC1F7BC /* BmiModel.swift in Sources */,
 				5F8F63E0CFABE82BB7720B13 /* BmiState.swift in Sources */,
 				5F8F614245981DE8A54655DC /* BmiView.swift in Sources */,
+				5F8F67E00BFEF57E66C68498 /* BmiIntentions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

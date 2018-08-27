@@ -8,13 +8,17 @@ import Foundation
 struct BmiState: MviState {
   let height: Int
   let weight: Int
-  let bmi: Float
+  let bmi: Double
 
   static func initial() -> BmiState {
     return BmiState(height: 160, weight: 40, bmi: 15.6)
   }
 
   func restored() -> BmiState {
+    return BmiState(height: height, weight: weight, bmi: bmi)
+  }
+
+  func heightChanged(height: Int, bmi: Double) -> BmiState {
     return BmiState(height: height, weight: weight, bmi: bmi)
   }
 

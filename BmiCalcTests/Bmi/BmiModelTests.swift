@@ -15,29 +15,41 @@ import RxCocoa
   ==========
   - emits bmi when view created
   - emits bmi when view restored
-  - TODO: emits bmi when height changed
+  - emits bmi when height changed
   - TODO: emits bmi when weight changed
 */
 class BmiModelTests: XCTestCase {
   private let initialState = BmiState.initial()
+  private let minHeight = 130
+  private let maxHeight = 200
 
+  private var disposeBag: DisposeBag!
   private var observer: TestableObserver<BmiState>!
+
   private var lifecycle: PublishRelay<MviLifecycle>!
   private var states: PublishRelay<BmiState>!
-  private var disposeBag: DisposeBag!
+
+  private var heightChanges: PublishRelay<Float>!
+
+  private var intentions: BmiIntentions!
 
   override func setUp() {
     super.setUp()
     // Initialization
+    disposeBag = DisposeBag()
     observer = TestScheduler(initialClock: 0)
       .createObserver(BmiState.self)
+
     lifecycle = PublishRelay()
     states = PublishRelay()
-    disposeBag = DisposeBag()
+
+    heightChanges = PublishRelay()
+
+    intentions = BmiIntentions(heightChanges.asObservable(), minHeight, maxHeight)
 
     // Setup
     BmiModel
-      .bind(lifecycle.asObservable(), states.asObservable())
+      .bind(lifecycle.asObservable(), states.asObservable(), intentions)
       .do(onNext: { state in self.states.accept(state) })
       .subscribe(observer)
       .disposed(by: disposeBag)
@@ -68,6 +80,26 @@ class BmiModelTests: XCTestCase {
     let expectedEvents = [
       next(0, initialState),
       next(0, initialState.restored())
+    ]
+    assertEvents(
+      observer.events,
+      expectedEvents
+    )
+  }
+
+  func testEmitsBmi_whenHeightChanged() {
+    // Setup
+    // Act
+    lifecycle.accept(.created)
+    heightChanges.accept(0.7)
+
+    // Assert
+    let expectedEvents = [
+      next(0, initialState),
+      next(0, initialState.heightChanged(
+        height: 179,
+        bmi: BmiModel.calculateBmi(height: 179, weight: initialState.weight))
+      )
     ]
     assertEvents(
       observer.events,
