@@ -20,11 +20,11 @@ class BmiIntentions {
 
   func height() -> Observable<Int> {
     return heightChanges
-      .map { payload in payload.value() }
+      .map { payload in payload.calculatedValue() }
   }
 
   func weight() -> Observable<Int> {
     return weightChanges
-      .map { payload in payload.value() }
+      .map { payload in payload.calculatedValue() }
   }
 }

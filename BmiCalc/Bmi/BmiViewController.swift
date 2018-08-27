@@ -15,7 +15,7 @@ struct SliderPayload {
   let max: Int
   let progress: Float
 
-  func value() -> Int {
+  func calculatedValue() -> Int {
     return min + Int(progress * Float(max - min))
   }
 }
