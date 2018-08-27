@@ -44,7 +44,7 @@
                                                             </label>
                                                         </subviews>
                                                     </stackView>
-                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="N3g-LM-DXu">
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.41999999999999998" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="N3g-LM-DXu">
                                                         <rect key="frame" x="0.5" y="37.5" width="294" height="31"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="290" id="hzl-5d-Il4"/>
@@ -78,7 +78,7 @@
                                                             </label>
                                                         </subviews>
                                                     </stackView>
-                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="cuU-FY-fZi">
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.059999999999999998" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="cuU-FY-fZi">
                                                         <rect key="frame" x="0.5" y="37.5" width="294" height="31"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="290" id="TPC-o0-aXf"/>

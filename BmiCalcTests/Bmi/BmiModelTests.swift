@@ -19,11 +19,17 @@ import RxCocoa
   - emits bmi when weight changed
 */
 class BmiModelTests: XCTestCase {
-  private let initialState = BmiState.initial()
   private let minHeight = 130
   private let maxHeight = 200
   private let minWeight = 30
   private let maxWeight = 200
+  private let defaultHeight = 160
+  private let defaultWeight = 40
+  private lazy var initialState = BmiState.initial(
+    height: defaultHeight,
+    weight: defaultWeight,
+    bmi: BmiModel.calculateBmi(height: defaultHeight, weight: defaultWeight)
+  )
 
   private var disposeBag: DisposeBag!
   private var observer: TestableObserver<BmiState>!

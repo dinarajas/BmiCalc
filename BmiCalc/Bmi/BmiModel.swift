@@ -14,7 +14,12 @@ class BmiModel {
   ) -> Observable<BmiState> {
     let createdLifecycleStates = lifecycle
       .filter { lifecycle in lifecycle == .created }
-      .map { _ in BmiState.initial() }
+      .map { _ -> BmiState in
+        let defaultHeight = 160
+        let defaultWeight = 40
+        let bmi = calculateBmi(height: defaultHeight, weight: defaultWeight)
+        return BmiState.initial(height: defaultHeight, weight: defaultWeight, bmi: bmi)
+      }
 
     let restoredLifecycleStates = lifecycle
       .filter { lifecycle in lifecycle == .restored }
@@ -23,14 +28,14 @@ class BmiModel {
 
     let heightChangeStates = intentions
       .height()
-      .withLatestFrom(states) { (height, state: BmiState) -> BmiState in
+      .withLatestFrom(states) { (height: Int, state: BmiState) -> BmiState in
         let bmi = calculateBmi(height: height, weight: state.weight)
         return state.heightChanged(height: height, bmi: bmi)
       }
 
     let weightChangeStates = intentions
       .weight()
-      .withLatestFrom(states) { (weight, state: BmiState) -> BmiState in
+      .withLatestFrom(states) { (weight: Int, state: BmiState) -> BmiState in
         let bmi = calculateBmi(height: state.height, weight: weight)
         return state.weightChanged(weight: weight, bmi: bmi)
       }

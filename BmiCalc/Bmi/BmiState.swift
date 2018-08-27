@@ -10,8 +10,8 @@ struct BmiState: MviState {
   let weight: Int
   let bmi: Double
 
-  static func initial() -> BmiState {
-    return BmiState(height: 160, weight: 40, bmi: 15.6)
+  static func initial(height: Int, weight: Int, bmi: Double) -> BmiState {
+    return BmiState(height: height, weight: weight, bmi: bmi)
   }
 
   func restored() -> BmiState {
