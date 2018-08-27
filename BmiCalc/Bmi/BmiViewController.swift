@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
-class BmiViewController: UIViewController {
+class BmiViewController: MviController<BmiState> {
   @IBOutlet weak var weightLabel: UILabel!
   @IBOutlet weak var heightLabel: UILabel!
 
@@ -22,4 +24,24 @@ class BmiViewController: UIViewController {
 
   private let defaultHeight = 160
   private let minimumHeight = 130
+
+  override func bind(
+    states: Observable<BmiState>,
+    lifecycle: Observable<MviLifecycle>
+  ) -> Observable<BmiState> {
+    return BmiModel
+      .bind(lifecycle: lifecycle)
+  }
+
+  override func emits(state: BmiState) {
+    render(state: state)
+  }
+}
+
+extension BmiViewController: BmiView {
+  func showBmi(bmi: Float, height: Int, weight: Int) {
+    bmiValueLabel.text = "\(bmi)"
+    heightLabel.text = "\(height)"
+    weightLabel.text = "\(weight)"
+  }
 }
