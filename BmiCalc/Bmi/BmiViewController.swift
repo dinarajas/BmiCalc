@@ -30,7 +30,7 @@ class BmiViewController: MviController<BmiState> {
     lifecycle: Observable<MviLifecycle>
   ) -> Observable<BmiState> {
     return BmiModel
-      .bind(lifecycle: lifecycle)
+      .bind(lifecycle, states)
   }
 
   override func emits(state: BmiState) {

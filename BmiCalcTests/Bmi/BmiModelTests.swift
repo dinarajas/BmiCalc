@@ -14,28 +14,60 @@ import RxCocoa
   Test cases:
   ==========
   - emits bmi when view created
-  - TODO: emits bmi when view restored
+  - emits bmi when view restored
   - TODO: emits bmi when height changed
   - TODO: emits bmi when weight changed
 */
 class BmiModelTests: XCTestCase {
-  func testEmitsBmi_whenViewCreated() {
-    // Setup
-    let observer = TestScheduler(initialClock: 0)
+  private let initialState = BmiState.initial()
+
+  private var observer: TestableObserver<BmiState>!
+  private var lifecycle: PublishRelay<MviLifecycle>!
+  private var states: PublishRelay<BmiState>!
+  private var disposeBag: DisposeBag!
+
+  override func setUp() {
+    super.setUp()
+    // Initialization
+    observer = TestScheduler(initialClock: 0)
       .createObserver(BmiState.self)
-    let lifecycle = PublishRelay<MviLifecycle>()
-    let disposeBag = DisposeBag()
+    lifecycle = PublishRelay()
+    states = PublishRelay()
+    disposeBag = DisposeBag()
+
+    // Setup
     BmiModel
-      .bind(lifecycle: lifecycle.asObservable())
+      .bind(lifecycle.asObservable(), states.asObservable())
+      .do(onNext: { state in self.states.accept(state) })
       .subscribe(observer)
       .disposed(by: disposeBag)
+  }
 
+  func testEmitsBmi_whenViewCreated() {
+    // Setup
     // Act
     lifecycle.accept(.created)
 
     // Assert
     let expectedEvents = [
-      next(0, BmiState.initial())
+      next(0, initialState)
+    ]
+    assertEvents(
+      observer.events,
+      expectedEvents
+    )
+  }
+
+  func testEmitsBmi_whenViewRestored() {
+    // Setup
+    // Act
+    lifecycle.accept(.created)
+    lifecycle.accept(.restored)
+
+    // Assert
+    let expectedEvents = [
+      next(0, initialState),
+      next(0, initialState.restored())
     ]
     assertEvents(
       observer.events,

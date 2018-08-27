@@ -14,6 +14,10 @@ struct BmiState: MviState {
     return BmiState(height: 160, weight: 40, bmi: 15.6)
   }
 
+  func restored() -> BmiState {
+    return BmiState(height: height, weight: weight, bmi: bmi)
+  }
+
   static func ==(lhs: BmiState, rhs: BmiState) -> Bool {
     return lhs.height == rhs.height
       && lhs.weight == rhs.weight

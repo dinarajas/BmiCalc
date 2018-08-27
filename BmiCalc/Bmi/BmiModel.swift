@@ -8,12 +8,21 @@ import RxSwift
 
 class BmiModel {
   static func bind(
-    lifecycle: Observable<MviLifecycle>
+    _ lifecycle: Observable<MviLifecycle>,
+    _ states: Observable<BmiState>
   ) -> Observable<BmiState> {
     let createdLifecycleStates = lifecycle
       .filter { lifecycle in lifecycle == .created }
       .map { _ in BmiState.initial() }
 
-    return createdLifecycleStates
+    let restoredLifecycleStates = lifecycle
+      .filter { lifecycle in lifecycle == .restored }
+      .withLatestFrom(states)
+      .map { (state: BmiState) in state.restored() }
+
+    return Observable.merge(
+      createdLifecycleStates,
+      restoredLifecycleStates
+    )
   }
 }
