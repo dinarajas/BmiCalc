@@ -10,6 +10,14 @@ struct BmiState: MviState {
   let weight: Int
   let bmi: Double
 
+  static func ==(lhs: BmiState, rhs: BmiState) -> Bool {
+    return lhs.height == rhs.height
+      && lhs.weight == rhs.weight
+      && lhs.bmi == rhs.bmi
+  }
+}
+
+extension BmiState {
   static func initial(height: Int, weight: Int, bmi: Double) -> BmiState {
     return BmiState(height: height, weight: weight, bmi: bmi)
   }
@@ -24,11 +32,5 @@ struct BmiState: MviState {
 
   func weightChanged(weight: Int, bmi: Double) -> BmiState {
     return BmiState(height: height, weight: weight, bmi: bmi)
-  }
-
-  static func ==(lhs: BmiState, rhs: BmiState) -> Bool {
-    return lhs.height == rhs.height
-      && lhs.weight == rhs.weight
-      && lhs.bmi == rhs.bmi
   }
 }
