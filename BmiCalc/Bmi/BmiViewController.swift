@@ -11,13 +11,18 @@ import RxSwift
 import RxCocoa
 
 class BmiViewController: MviController<BmiState> {
-  @IBOutlet weak var weightLabel: UILabel!
-  @IBOutlet weak var heightLabel: UILabel!
-
   @IBOutlet weak var heightSlider: UISlider!
   @IBOutlet weak var weightSlider: UISlider!
-  
+  @IBOutlet weak var weightLabel: UILabel!
+  @IBOutlet weak var heightLabel: UILabel!
   @IBOutlet weak var bmiValueLabel: UILabel!
+
+  private let bmiNumberFormatter: NumberFormatter = {
+    let numberFormatter = NumberFormatter()
+    numberFormatter.maximumFractionDigits = 1
+    numberFormatter.minimumFractionDigits = 1
+    return numberFormatter
+  }()
 
   private let defaultWeight = 40
   private let minimumWeight = 30
@@ -51,7 +56,10 @@ class BmiViewController: MviController<BmiState> {
 
 extension BmiViewController: BmiView {
   func showBmi(bmi: Double, height: Int, weight: Int) {
-    bmiValueLabel.text = "\(bmi)"
+    let bmiString = bmiNumberFormatter
+      .string(from: NSNumber(value: bmi))
+    bmiValueLabel.text = bmiString
+
     heightLabel.text = "\(height)"
     weightLabel.text = "\(weight)"
   }

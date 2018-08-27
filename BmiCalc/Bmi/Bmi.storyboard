@@ -65,13 +65,13 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="295" height="27.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight (kgs)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYj-i0-Mfk">
-                                                                <rect key="frame" x="0.0" y="0.0" width="233.5" height="27.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="233" height="27.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                                 <color key="textColor" red="0.12549019610000001" green="0.58039215690000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Loh-6j-uVm">
-                                                                <rect key="frame" x="233.5" y="0.0" width="61.5" height="27.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Loh-6j-uVm">
+                                                                <rect key="frame" x="233" y="0.0" width="62" height="27.5"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="23"/>
                                                                 <color key="textColor" red="0.88187095849999997" green="0.32457797700000002" blue="0.35566738040000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -92,8 +92,8 @@
                                                     <constraint firstItem="HQn-t7-Irp" firstAttribute="leading" secondItem="xZ7-Wy-hKv" secondAttribute="leading" id="pg9-2s-h3R"/>
                                                 </constraints>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="KkJ-cQ-UPm">
-                                                <rect key="frame" x="90.5" y="255" width="155" height="36"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KkJ-cQ-UPm">
+                                                <rect key="frame" x="100.5" y="255" width="135.5" height="36"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BMI - " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUm-b3-RZh">
                                                         <rect key="frame" x="0.0" y="0.0" width="77.5" height="36"/>
@@ -101,8 +101,8 @@
                                                         <color key="textColor" red="0.2691526454" green="0.26754095290000002" blue="0.27076433789999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="38.4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fbb-2R-RGJ">
-                                                        <rect key="frame" x="77.5" y="0.0" width="77.5" height="36"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15.6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fbb-2R-RGJ">
+                                                        <rect key="frame" x="77.5" y="0.0" width="58" height="36"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                         <color key="textColor" red="0.922289241188889" green="0.10509631580555556" blue="0.30889948420000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -284,9 +284,9 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="bmiValueLabel" destination="Fbb-2R-RGJ" id="so0-vu-8oN"/>
-                        <outlet property="heightLabel" destination="Loh-6j-uVm" id="FgD-nL-jEu"/>
+                        <outlet property="heightLabel" destination="g9Z-Lb-uGp" id="ndr-ho-b6B"/>
                         <outlet property="heightSlider" destination="N3g-LM-DXu" id="vU8-c0-N03"/>
-                        <outlet property="weightLabel" destination="g9Z-Lb-uGp" id="3bw-Vc-1ql"/>
+                        <outlet property="weightLabel" destination="Loh-6j-uVm" id="Tia-7V-L89"/>
                         <outlet property="weightSlider" destination="cuU-FY-fZi" id="aQT-Zt-Gfa"/>
                     </connections>
                 </viewController>
