@@ -10,6 +10,16 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+struct SliderPayload {
+  let min: Int
+  let max: Int
+  let progress: Float
+
+  func value() -> Int {
+    return min + Int(progress * Float(max - min))
+  }
+}
+
 class BmiViewController: MviController<BmiState> {
   @IBOutlet weak var heightSlider: UISlider!
   @IBOutlet weak var weightSlider: UISlider!
@@ -33,12 +43,16 @@ class BmiViewController: MviController<BmiState> {
   private let maximumHeight = 200
 
   private lazy var intentions = BmiIntentions(
-    heightSlider.rx.value.asObservable(),
-    minimumHeight,
-    maximumHeight,
-    weightSlider.rx.value.asObservable(),
-    minimumWeight,
-    maximumWeight
+    heightSlider.rx.value
+      .map { progress in
+        SliderPayload(min: self.minimumHeight, max: self.maximumHeight, progress: progress)
+      }
+      .asObservable(),
+    weightSlider.rx.value
+      .map { progress in
+        SliderPayload(min: self.minimumWeight, max: self.maximumWeight, progress: progress)
+      }
+      .asObservable()
   )
 
   override func bind(

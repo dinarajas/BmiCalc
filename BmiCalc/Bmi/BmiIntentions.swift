@@ -7,38 +7,24 @@ import Foundation
 import RxSwift
 
 class BmiIntentions {
-  private let heightChanges: Observable<Float>
-  private let minHeight: Int
-  private let maxHeight: Int
-
-  private let weightChanges: Observable<Float>
-  private let minWeight: Int
-  private let maxWeight: Int
+  private let heightChanges: Observable<SliderPayload>
+  private let weightChanges: Observable<SliderPayload>
 
   init(
-    _ heightChanges: Observable<Float>,
-    _ minHeight: Int,
-    _ maxHeight: Int,
-    _ weightChanges: Observable<Float>,
-    _ minWeight: Int,
-    _ maxWeight: Int
+    _ heightChanges: Observable<SliderPayload>,
+    _ weightChanges: Observable<SliderPayload>
   ) {
     self.heightChanges = heightChanges
-    self.minHeight = minHeight
-    self.maxHeight = maxHeight
-
     self.weightChanges = weightChanges
-    self.minWeight = minWeight
-    self.maxWeight = maxWeight
   }
 
   func height() -> Observable<Int> {
     return heightChanges
-      .map { progress in self.minHeight + Int(progress * Float(self.maxHeight - self.minHeight)) }
+      .map { payload in payload.value() }
   }
 
   func weight() -> Observable<Int> {
     return weightChanges
-      .map { progress in self.minWeight + Int(progress * Float(self.maxWeight - self.minWeight)) }
+      .map { payload in payload.value() }
   }
 }
