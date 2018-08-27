@@ -63,7 +63,7 @@ class BmiViewController: MviController<BmiState> {
       .bind(lifecycle, states, intentions)
   }
 
-  override func emits(state: BmiState) {
+  override func emitted(state: BmiState) {
     render(state: state)
   }
 }

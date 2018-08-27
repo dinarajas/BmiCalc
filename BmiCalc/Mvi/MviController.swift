@@ -20,7 +20,7 @@ class MviController<T: MviState>: UIViewController {
   func bind(states: Observable<T>, lifecycle: Observable<MviLifecycle>) -> Observable<T> {
     fatalError("Bind(states:lifecycle:) method has not implemented")
   }
-  func emits(state: T) {
+  func emitted(state: T) {
     fatalError("emits(state:) method has not implemented")
   }
   func postBind() {}
@@ -60,7 +60,7 @@ class MviController<T: MviState>: UIViewController {
         // Prevents nil state flowing through the observable streams
         if let state = event.element {
           self.statesRelay.accept(state)
-          self.emits(state: state)
+          self.emitted(state: state)
         }
       }
 
