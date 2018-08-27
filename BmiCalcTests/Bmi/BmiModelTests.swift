@@ -16,12 +16,14 @@ import RxCocoa
   - emits bmi when view created
   - emits bmi when view restored
   - emits bmi when height changed
-  - TODO: emits bmi when weight changed
+  - emits bmi when weight changed
 */
 class BmiModelTests: XCTestCase {
   private let initialState = BmiState.initial()
   private let minHeight = 130
   private let maxHeight = 200
+  private let minWeight = 30
+  private let maxWeight = 200
 
   private var disposeBag: DisposeBag!
   private var observer: TestableObserver<BmiState>!
@@ -30,6 +32,7 @@ class BmiModelTests: XCTestCase {
   private var states: PublishRelay<BmiState>!
 
   private var heightChanges: PublishRelay<Float>!
+  private var weightChanges: PublishRelay<Float>!
 
   private var intentions: BmiIntentions!
 
@@ -44,8 +47,16 @@ class BmiModelTests: XCTestCase {
     states = PublishRelay()
 
     heightChanges = PublishRelay()
+    weightChanges = PublishRelay()
 
-    intentions = BmiIntentions(heightChanges.asObservable(), minHeight, maxHeight)
+    intentions = BmiIntentions(
+      heightChanges.asObservable(),
+      minHeight,
+      maxHeight,
+      weightChanges.asObservable(),
+      minWeight,
+      maxWeight
+    )
 
     // Setup
     BmiModel
@@ -99,6 +110,26 @@ class BmiModelTests: XCTestCase {
       next(0, initialState.heightChanged(
         height: 179,
         bmi: BmiModel.calculateBmi(height: 179, weight: initialState.weight))
+      )
+    ]
+    assertEvents(
+      observer.events,
+      expectedEvents
+    )
+  }
+
+  func testEmitsBmi_whenWeightChanged() {
+    // Setup
+    // Act
+    lifecycle.accept(.created)
+    weightChanges.accept(0.2)
+
+    // Assert
+    let expectedEvents = [
+      next(0, initialState),
+      next(0, initialState.weightChanged(
+        weight: 64,
+        bmi: BmiModel.calculateBmi(height: initialState.height, weight: 64))
       )
     ]
     assertEvents(

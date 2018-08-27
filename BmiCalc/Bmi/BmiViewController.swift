@@ -30,7 +30,10 @@ class BmiViewController: MviController<BmiState> {
   private lazy var intentions = BmiIntentions(
     heightSlider.rx.value.asObservable(),
     minimumHeight,
-    maximumHeight
+    maximumHeight,
+    weightSlider.rx.value.asObservable(),
+    minimumWeight,
+    maximumWeight
   )
 
   override func bind(

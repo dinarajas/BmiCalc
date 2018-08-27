@@ -27,10 +27,19 @@ class BmiModel {
         let bmi = calculateBmi(height: height, weight: state.weight)
         return state.heightChanged(height: height, bmi: bmi)
       }
+
+    let weightChangeStates = intentions
+      .weight()
+      .withLatestFrom(states) { (weight, state: BmiState) -> BmiState in
+        let bmi = calculateBmi(height: state.height, weight: weight)
+        return state.weightChanged(weight: weight, bmi: bmi)
+      }
+
     return Observable.merge(
       createdLifecycleStates,
       restoredLifecycleStates,
-      heightChangeStates
+      heightChangeStates,
+      weightChangeStates
     )
   }
 
