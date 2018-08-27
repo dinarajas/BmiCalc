@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		10A3E9686A67C5141EF1B02B /* Pods_BmiCalc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F75B066948C86A2FC2FB6E /* Pods_BmiCalc.framework */; };
+		5F8F63FD5FAF30FE4C905DED /* MviController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8F6618A711ED5512A1139B /* MviController.swift */; };
+		5F8F663E0501B44D7D132A2A /* MviLifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8F6E28B89B724F0530E492 /* MviLifecycle.swift */; };
+		5F8F6B9C603247A425127E7C /* MviState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8F6AB7E17F4A4280F20B7A /* MviState.swift */; };
+		5F8F6D8917E0A32508BF74D2 /* Observable+Mvi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8F69D3A0F90554B43D6683 /* Observable+Mvi.swift */; };
 		8F43F22F21328B4C007E9AE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F43F22E21328B4C007E9AE0 /* AppDelegate.swift */; };
 		8F43F23621328B4C007E9AE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F43F23521328B4C007E9AE0 /* Assets.xcassets */; };
 		8F43F23921328B4C007E9AE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F43F23721328B4C007E9AE0 /* LaunchScreen.storyboard */; };
@@ -30,6 +34,10 @@
 /* Begin PBXFileReference section */
 		49F75B066948C86A2FC2FB6E /* Pods_BmiCalc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BmiCalc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5592FCC16832CDCF5A7B2165 /* Pods-BmiCalc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BmiCalc.release.xcconfig"; path = "Pods/Target Support Files/Pods-BmiCalc/Pods-BmiCalc.release.xcconfig"; sourceTree = "<group>"; };
+		5F8F6618A711ED5512A1139B /* MviController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MviController.swift; sourceTree = "<group>"; };
+		5F8F69D3A0F90554B43D6683 /* Observable+Mvi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+Mvi.swift"; sourceTree = "<group>"; };
+		5F8F6AB7E17F4A4280F20B7A /* MviState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MviState.swift; sourceTree = "<group>"; };
+		5F8F6E28B89B724F0530E492 /* MviLifecycle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MviLifecycle.swift; sourceTree = "<group>"; };
 		8B4C5C576F7773F9303AB50F /* Pods_BmiCalcTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BmiCalcTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F43F22B21328B4C007E9AE0 /* BmiCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BmiCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F43F22E21328B4C007E9AE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +94,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5F8F648452516D77751783DF /* Mvi */ = {
+			isa = PBXGroup;
+			children = (
+				5F8F6618A711ED5512A1139B /* MviController.swift */,
+				5F8F6AB7E17F4A4280F20B7A /* MviState.swift */,
+				5F8F6E28B89B724F0530E492 /* MviLifecycle.swift */,
+				5F8F69D3A0F90554B43D6683 /* Observable+Mvi.swift */,
+			);
+			path = Mvi;
+			sourceTree = "<group>";
+		};
 		8F43F22221328B4C007E9AE0 = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +133,7 @@
 				8F43F23521328B4C007E9AE0 /* Assets.xcassets */,
 				8F43F23721328B4C007E9AE0 /* LaunchScreen.storyboard */,
 				8F43F23A21328B4C007E9AE0 /* Info.plist */,
+				5F8F648452516D77751783DF /* Mvi */,
 			);
 			path = BmiCalc;
 			sourceTree = "<group>";
@@ -324,6 +344,10 @@
 			files = (
 				8F43F22F21328B4C007E9AE0 /* AppDelegate.swift in Sources */,
 				8F43F25521328D26007E9AE0 /* BmiViewController.swift in Sources */,
+				5F8F63FD5FAF30FE4C905DED /* MviController.swift in Sources */,
+				5F8F6B9C603247A425127E7C /* MviState.swift in Sources */,
+				5F8F663E0501B44D7D132A2A /* MviLifecycle.swift in Sources */,
+				5F8F6D8917E0A32508BF74D2 /* Observable+Mvi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
