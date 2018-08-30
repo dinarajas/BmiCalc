@@ -14,8 +14,8 @@ class BmiModel {
   ) -> Observable<BmiState> {
     let createdLifecycleStates = lifecycleCreatedUseCase(lifecycle)
     let restoredLifecycleStates = lifecycleRestoredUseCase(lifecycle, states)
-    let heightChangeStates = heightChangesUseCase(intentions, states)
-    let weightChangeStates = weightChangesUseCase(intentions, states)
+    let heightChangeStates = heightChangesUseCase(intentions.height(), states)
+    let weightChangeStates = weightChangesUseCase(intentions.weight(), states)
 
     return Observable.merge(
       createdLifecycleStates,
@@ -26,11 +26,10 @@ class BmiModel {
   }
 
   private static func weightChangesUseCase(
-    _ intentions: BmiIntentions,
+    _ weightChanges: Observable<Int>,
     _ states: Observable<BmiState>
   ) -> Observable<BmiState> {
-    return intentions
-      .weight()
+    return weightChanges
       .withLatestFrom(states) { (weight: Int, state: BmiState) -> BmiState in
         let bmi = calculateBmi(height: state.height, weight: weight)
         return state.weightChanged(weight: weight, bmi: bmi)
@@ -38,11 +37,10 @@ class BmiModel {
   }
 
   private static func heightChangesUseCase(
-    _ intentions: BmiIntentions,
+    _ heightChanges: Observable<Int>,
     _ states: Observable<BmiState>
   ) -> Observable<BmiState> {
-    return intentions
-      .height()
+    return heightChanges
       .withLatestFrom(states) { (height: Int, state: BmiState) -> BmiState in
         let bmi = calculateBmi(height: height, weight: state.weight)
         return state.heightChanged(height: height, bmi: bmi)
