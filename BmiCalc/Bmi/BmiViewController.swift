@@ -15,7 +15,7 @@ struct SliderPayload {
   let max: Int
   let progress: Float
 
-  func calculatedValue() -> Int {
+  func actualValue() -> Int {
     return min + Int(progress * Float(max - min))
   }
 }
@@ -34,26 +34,25 @@ class BmiViewController: MviController<BmiState> {
     return numberFormatter
   }()
 
-  private let defaultWeight = 40
-  private let minimumWeight = 30
-  private let maximumWeight = 200
+  private let minWeight = 30
+  private let maxWeight = 200
 
-  private let defaultHeight = 160
-  private let minimumHeight = 130
-  private let maximumHeight = 200
+  private let minHeight = 130
+  private let maxHeight = 200
 
-  private lazy var intentions = BmiIntentions(
-    heightSlider.rx.value
-      .map { progress in
-        SliderPayload(min: self.minimumHeight, max: self.maximumHeight, progress: progress)
-      }
-      .asObservable(),
-    weightSlider.rx.value
-      .map { progress in
-        SliderPayload(min: self.minimumWeight, max: self.maximumWeight, progress: progress)
-      }
-      .asObservable()
-  )
+  private lazy var weightChanges = weightSlider.rx
+    .value
+    .map { progress in
+      SliderPayload(min: self.minWeight, max: self.maxWeight, progress: progress)
+    }
+
+  private lazy var heightChanges = heightSlider.rx
+    .value
+    .map { progress in
+      SliderPayload(min: self.minHeight, max: self.maxHeight, progress: progress)
+    }
+
+  private lazy var intentions = BmiIntentions(heightChanges, weightChanges)
 
   override func bind(
     states: Observable<BmiState>,
